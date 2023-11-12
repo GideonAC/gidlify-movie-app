@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>Home</title>
+
+    <%- include('./partials/header.ejs') %>
+
+    <main>
+      <section class="hero">
+        <h1>Welcome to Gidlify Cinema!</h1>
+        <p>
+          Discover the latest movies and enjoy your cinematic journey with us...
+        </p>
+      </section>
+
+      <section class="movie-cards">
+        <!-- Movie cards will be dynamically generated here -->
+        <div class="video-div">
+          <div class="video-container">
+            <video controls autoplay loop muted>
+              <source
+                src="https://dl6.webmfiles.org/big-buck-bunny_trailer.webm"
+                type="video/mp4"
+              />
+            </video>
+          </div>
+        </div>
+
+        <!-- Inside the movie card -->
+      </section>
+    </main>
+
+    <div class="wrap">
+
+    <% if (movies.length > 0){ %>
+        <% for (let movie of movies){%>
+            <div class="box">
+                <div class="box-top">
+                    <img class="box-image" src="<%= movie.dataValues.image %>"alt="movie-image"/>
+                    <div class="title-flex">
+                    <h3 class="box-title"><%= movie.dataValues.title %></h3>
+                    <p class="user-follow-info"><%= movie.dataValues.price %></p>
+                    </div>
+                    <p class="description"> <%= movie.dataValues.description %></p>
+                </div>
+                <!-- <div id="btns">
+                    <form action="" method="post"> <button class="button">Edit </button></form>
+                    <form action="" method="post"> <button class="button">Delete </button></form>
+                </div> -->
+            </div>
+        <%}%>
+    <%} else {%>
+        <div> <p>No Movie Found </p></div>
+
+    <%}%>
+  </div>
+    <%-include('./partials/footer.ejs') %>
+    <script src="/javascripts/script.js"></script>
+  </body>
+</html>
